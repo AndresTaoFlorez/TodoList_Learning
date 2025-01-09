@@ -1,0 +1,19 @@
+@use "./_gtl";
+
+.TodoList {
+  display: flex;
+  flex-direction: column;
+  background: #1c2c3c;
+  margin: 2em auto;
+  width: 800px;
+  padding: gtl.$margin;
+  border-radius: gtl.$rounded-1;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

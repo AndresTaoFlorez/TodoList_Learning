@@ -1,0 +1,71 @@
+@use "./gtl";
+
+.TodoItem {
+  display: flex;
+  grid-template-rows: 1fr;
+  padding: 5px;
+  border-radius: 8px;
+  background: #8ed0e8;
+  padding: 10px;
+  align-items: center; /* Alinea verticalmente los elementos */
+  width: 100%;
+  border-bottom: 1px solid #545454;
+
+  p {
+    margin-left: calc(gtl.$margin * 2);
+    overflow-x: hidden;
+    max-width: 360px;
+  }
+
+  .TodoItem__checkbox {
+    &--completed {
+      color: rgb(61, 167, 61);
+    }
+    &--uncompleted {
+      color: rgb(24, 105, 123);
+    }
+  }
+
+  .deleteTask {
+    border: none;
+    background: rgb(228, 64, 64);
+    border-radius: 8px;
+    padding: 3px 5px;
+    margin: 2px 8px;
+    right: 0;
+    
+    &:hover {
+      background: rgb(222, 101, 101);
+      cursor: pointer;
+    }
+    &:active {
+      background: rgb(228, 64, 64);
+    }
+  }
+}
+
+.emptyItems {
+  background: linear-gradient(
+    90deg,
+    #98d1e6 25%,
+    #a1ddf3 50%,
+    #98d1e6 75%
+  ); // Adds a gradient for skeleton loading
+  background-size: 400px 100%; // Ensures smooth animation
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px; // Optional: for rounded corners
+
+  & > * {
+    display: flex;
+    z-index: -1;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: 200px 0;
+    }
+  }
+}

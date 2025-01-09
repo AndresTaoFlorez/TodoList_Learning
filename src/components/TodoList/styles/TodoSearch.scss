@@ -1,0 +1,46 @@
+@use "./gtl";
+
+.TodoSearch {
+  display: flex;
+  min-width: 200px;
+  width: fit-content;
+  height: fit-content;
+  height: 3em;
+  padding: 0;
+  margin: 0 gtl.$margin;
+  align-items: center;
+  position: relative;
+
+  input {
+    height: 100%;
+    display: inline-block;
+    min-width: 200px;
+    max-width: 100%;
+    width: auto;
+    padding: 0 calc(gtl.$margin + (gtl.$margin * 0.5));
+    margin: 0;
+    border-radius: gtl.$rounded-1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:focus {
+      border: none;
+      outline: 2px solid #302c2c8e;
+      box-shadow: 1px 1px 15px 0px #ffffff8e, inset 0px 0 8px 2px #ffffffb2,
+        inset 0px 0 7px 3px #666c70de;
+    }
+    &:active {
+      border: 1px solid rgb(102, 95, 95);
+    }
+  }
+
+  .input-helper {
+    visibility: hidden;
+    position: absolute;
+    white-space: nowrap;
+    font-size: 1em;
+    font-weight: 700;
+    color: transparent; /* Invisible */
+  }
+}

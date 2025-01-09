@@ -1,0 +1,51 @@
+@use "../styles/gtl";
+
+.TodoCounter {
+  display: grid;
+  position: relative;
+  width: 100%;
+  margin-right: gtl.$margin;
+
+  &__textBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3em;
+    padding: 0 gtl.$margin;
+    border-radius: gtl.$rounded-1;
+    background: #3c5c7c;
+    width: fit-content;
+    justify-self: end;
+    box-sizing: border-box;
+
+    h1 {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+      font-weight: 700;
+      color: #dae7ff;
+
+    }
+    .counter {
+      margin-right: gtl.$margin;
+      p {
+        font-size: 1.5em;
+      }
+    }
+    .completed {
+      margin-left: gtl.$margin;
+      p {
+        margin-left: gtl.$margin;
+        color: rgb(95, 238, 95);
+      }
+    }
+    .uncompleted {
+      margin-left: gtl.$margin;
+      p {
+        margin-left: gtl.$margin;
+        color: rgb(252, 244, 201);
+      }
+    }
+  }
+}

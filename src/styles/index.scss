@@ -1,0 +1,71 @@
+@import "../styles/general.scss";
+
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 80vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  @include body-background(
+    "https://imgmedia.larepublica.pe/640x371/larepublica/original/2023/01/30/63d82b8dfbf2ae006c55bb54.webp"
+  );
+  background-attachment: fixed; // Esto hará que la imagen se mueva con el scroll
+
+  &:before {
+    content: "";
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    position: absolute; // Cambié fixed a absolute
+    top: 0;
+    left: 0;
+    z-index: -1;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Para Safari */
+
+    background: radial-gradient(
+      rgba(117, 112, 212, 0.4) 0%,
+      rgba(243, 174, 117, 0.6) 5%,
+      rgba(87, 71, 184, 0.32) 70%
+    ); /* Fondo semitransparente */
+    background-position: 349% 2323px, center; /* Gradiente y luego imagen */
+
+    /* Configuración de tamaño para ambas capas */
+    background-size: 166% 394%, cover; /* Gradiente y luego imagen */
+    background-repeat: repeat, no-repeat; /* Gradiente no se repite, imagen sí */
+
+    /* Configuración adicional */
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+    align-items: center;
+  }
+}
