@@ -1,23 +1,38 @@
 @use "./gtl";
+@import "./gtl";
 
 .TodoItem {
-  display: flex;
-  grid-template-rows: 1fr;
+  display: grid;
+  justify-self: center;
   padding: 5px;
   border-radius: 8px;
   background: #8ed0e8;
   padding: 10px;
-  align-items: center; /* Alinea verticalmente los elementos */
-  width: 100%;
+  align-items: center;
   border-bottom: 1px solid #545454;
+  transition: width 100ms;	break-inside: avoid;
+  width: clamp(200px, 510px, 80vw); //maxWidth in relation to the window size
 
-  p {
-    margin-left: calc(gtl.$margin * 2);
-    overflow-x: hidden;
-    max-width: 360px;
+  &__flex {
+    width: auto;
+    width: -webkit-fill-available;
+    margin-bottom: gtl.$margin;
+    gap: gtl.$margin;
+  }
+  &__grid {
+    grid-template-columns: auto 1fr auto;
+    gap: gtl.$margin;
+    grid-template-rows: auto;
   }
 
-  .TodoItem__checkbox {
+  p.pharagraph {
+    // text
+    display: grid;
+    place-self: baseline;
+    overflow-x: hidden;
+  }
+
+  &__checkbox {
     &--completed {
       color: rgb(61, 167, 61);
     }
@@ -27,20 +42,7 @@
   }
 
   .deleteTask {
-    border: none;
-    background: rgb(228, 64, 64);
-    border-radius: 8px;
-    padding: 3px 5px;
-    margin: 2px 8px;
-    right: 0;
-    
-    &:hover {
-      background: rgb(222, 101, 101);
-      cursor: pointer;
-    }
-    &:active {
-      background: rgb(228, 64, 64);
-    }
+    @include button($type: delete);
   }
 }
 
@@ -67,5 +69,11 @@
     100% {
       background-position: 200px 0;
     }
+  }
+}
+
+@media screen and (max-width: $screenMaxWidth__xs) {
+  .TodoItem {
+    width: 100%;
   }
 }

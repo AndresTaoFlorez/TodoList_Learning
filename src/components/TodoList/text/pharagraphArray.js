@@ -1,7 +1,7 @@
 const pharagraph = {
   ES: [
     {'0': 'Completado'},
-    { '1': 'Cortar cebolla' },
+    { '1': 'Buscar' },
     { '2': 'Crear' },
     { '3': 'No se encontraron items' },
     { '4': 'Escribe tu tarea' },
@@ -10,7 +10,7 @@ const pharagraph = {
   ],
   EN: [
     { '0': 'Completed' },
-    { '1': 'Cut onion' },
+    { '1': 'Search' },
     { '2': 'Create' },
     { '3': 'No items found' },
     { '4': 'Write your task' },

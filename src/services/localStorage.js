@@ -10,4 +10,20 @@ const getToLocalItems = () => {
   return items ? JSON.parse(items) : []
 }
 
-module.exports = { setToLocalItems, getToLocalItems }
+const setLocalConfig = ({ items }) => {
+  if (!items) return
+  localStorage.setItem('config', JSON.stringify(items))
+}
+
+const getLocalConfig = () => {
+  const items = localStorage.getItem('config')
+  const res =items ? JSON.parse(items) : []
+  return res
+}
+
+module.exports = {
+  setToLocalItems,
+  getToLocalItems,
+  setLocalConfig,
+  getLocalConfig
+}

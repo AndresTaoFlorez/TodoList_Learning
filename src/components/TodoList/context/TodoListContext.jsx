@@ -1,18 +1,25 @@
 import { createContext, useEffect, useState } from "react";
 import { useItems } from "../../../customHooks/useItems";
 import { pharagraph } from '../text/pharagraphArray'
+import { getLocalConfig, setLocalConfig } from "../../../services/localStorage";
 
 const TodoListContext = createContext()
 
 const TodoListProvider = ({ children }) => {
 
   const [config, setConfig] = useState()
+  const [view, setView] = useState(getLocalConfig().view || false);
 
   useEffect(() => {
     setConfig({
-      pharagraph: pharagraph.EN.map(obj => Object.values(obj)[0]) || ''
+      pharagraph: pharagraph.ES.map(obj => Object.values(obj)[0]) || ''
     });
-  }, [])
+  }, []);
+  
+  useEffect(() => {
+    setLocalConfig({ items: { view } });
+  }, [view]);
+  
 
   const {
     handleComplete = () => { },
@@ -33,7 +40,9 @@ const TodoListProvider = ({ children }) => {
       itemsFinded: todos,
       loading,
       errors,
-      config
+      config,
+      setView,
+      view
     }}>
       {children}
     </TodoListContext.Provider>

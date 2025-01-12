@@ -1,12 +1,13 @@
 @use "../styles/gtl";
+@import "../styles/gtl";
 
 .TodoCounter {
   display: grid;
   position: relative;
   width: 100%;
-  margin-right: gtl.$margin;
-
+  
   &__textBox {
+    margin-right: gtl.$margin;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,6 +17,7 @@
     background: #3c5c7c;
     width: fit-content;
     justify-self: end;
+    color: #dae7ff;
     box-sizing: border-box;
 
     h1 {
@@ -24,8 +26,6 @@
       padding: 0;
       font-size: 1em;
       font-weight: 700;
-      color: #dae7ff;
-
     }
     .counter {
       margin-right: gtl.$margin;
@@ -47,5 +47,11 @@
         color: rgb(252, 244, 201);
       }
     }
+  }
+}
+
+@media screen and (max-width: $screenMaxWidth__xs) {
+  .TodoCounter {
+    grid-row: 1 / 2;
   }
 }

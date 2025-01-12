@@ -1,37 +1,25 @@
 
-import { useContext, useRef, useState, useEffect } from "react"
+import { useContext, useRef, useEffect, useState } from "react"
 import { TodoListContext } from "../context/TodoListContext"
 import '../styles/TodoSearch.scss'
+import { InlineEditor } from "./inlineEditor";
+
 
 const TodoSearch = () => {
   const { handleSearch, config } = useContext(TodoListContext)
-  const [inputWidth, setInputWidth] = useState("auto");
-
-  // Ref para acceder al input y al span
-  const inputRef = useRef(null);
-  const spanRef = useRef(null);
-
-  const adjustWidth = () => {
-    if (inputRef.current && spanRef.current) {
-      spanRef.current.textContent = inputRef.current.value;
-      setInputWidth(`${spanRef.current.offsetWidth + 10}px`);
-    }
-  };
-
-  useEffect(() => {
-    adjustWidth();
-  }, [inputRef.current?.value]);
+  const reference = useRef(null);
+  const searchBar_ref = useRef(null);
 
   return <>
-    <div className="TodoSearch">
-      <input
-        ref={inputRef}
-        placeholder={`${config?.pharagraph[1]}`}
-        onChange={handleSearch}
-        onInput={adjustWidth} // Ajuste del tamaño al escribir
-        style={{ width: inputWidth }}
-      />
-      <span ref={spanRef} className="input-helper" />
+    <div className="TodoSearch" ref={reference}    >
+      <div className="TodoSearch__searchBar" ref={searchBar_ref}>
+        <InlineEditor
+          className="TodoSearch__searchBar__input"
+          placeholder={`${config?.pharagraph[1]}`}
+          onChange={handleSearch}
+        />
+      </div>
+      <span className="TodoSearch__span"></span>
     </div>
   </>
 }

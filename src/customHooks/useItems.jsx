@@ -91,12 +91,13 @@ const useItems = () => {
 }
 
 function findFirstAvailableNumber(num) {
-  const ids = num.map((item) => item.id) || [];
-  const occupied = new Set(ids.toString());
-  for (let i = 1; i < 10; i++) {
+  const ids = num.map(item => item.id) || [];
+  const occupied = new Set(ids.map(id => id.toString()));  // Corregido
+  for (let i = 1; i <= Number.MAX_SAFE_INTEGER; i++) {     // Rango ilimitado
     if (!occupied.has(i.toString())) return i;
   }
   return null;
 }
+
 
 export { useItems }

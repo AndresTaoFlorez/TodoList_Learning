@@ -1,5 +1,6 @@
 import TodoList from './components/TodoList/index.jsx'
 import { TodoListProvider } from './components/TodoList/context/TodoListContext.jsx'
+import "./styles/App.scss";
 
 function App() {
 

@@ -21,14 +21,14 @@ const TodoItem = ({
   customClass = '',
   id = 0
 }) => {
-  const { handleDelete, handleComplete, config } = useContext(TodoListContext)
+  const { handleDelete, handleComplete, config, view } = useContext(TodoListContext)
 
   return (
-    <li className={`TodoItem ${customClass}`}>
+    <li className={`TodoItem ${customClass} TodoItem__${view ? 'flex' : 'grid'}`}>
       <div className='TodoItem__checkbox' onClick={() => { handleComplete(id) }}>
         {completed ? <MdCheckBox className='TodoItem__checkbox--completed' size={'1.8em'} /> : <MdCheckBoxOutlineBlank className='TodoItem__checkbox--uncompleted' size={'1.8em'} />}
       </div>
-      <p>{text}</p>
+      <p className='pharagraph'>{text}</p>
       <button className="deleteTask" onClick={() => handleDelete(id)}>
         {config?.pharagraph[5]}
       </button>

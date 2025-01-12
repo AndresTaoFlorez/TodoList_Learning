@@ -1,56 +1,58 @@
 @use "../styles/gtl";
+@import "./gtl";
 
 .AddTodo {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  margin-top: 20px;
-  width: 500px;
+  display: grid;
+  align-items: center;
 }
 .AddTodo__form {
   display: flex;
   position: relative;
-  min-height: 3em;
-  width: 500px;
+  width: 100%;
 
   .AddTodo__textarea {
     display: flex;
     width: 100%;
-    height: 58px;
-    max-height: 500px;
+    min-height: 4em;
+    max-height: 40vh;
     border: 1px solid #ccc;
-    padding: gtl.$margin calc(gtl.$margin + (gtl.$margin * 0.5));
+    padding: calc(gtl.$margin + (gtl.$margin * 0.25));
     margin: 0;
     resize: none;
     border-radius: gtl.$rounded-1;
-    font-size: 1em;
     box-sizing: border-box;
     text-overflow: ellipsis;
+    transition: box-shadow 200ms;
+
+    @include Todo_scrollbar;
 
     &:focus {
       border: none;
-      outline: 2px solid #302c2c8e;
-      box-shadow: 1px 1px 15px 0px #ffffff8e, inset 0px 0 8px 2px #ffffffb2,
-        inset 0px 0 7px 3px #666c70de;
+      outline: 2px solid -webkit-focus-ring-color;
+      box-shadow: 0px 0px 20px 0px #31313152, inset 0px 0 8px 2px #ffffffb2,
+        inset 0px 0 7px 3px rgba(102, 108, 112, 0.274);
     }
     &:active {
-      border: 1px solid rgb(102, 95, 95);
+      border: 1px solid -webkit-focus-ring-color;
     }
   }
   .AddTodo__icon {
+    @include button($type: "add");
     border-radius: 8px;
-    font-size: 2.6em;
-    background-color: aliceblue;
-    margin: 5px 5px auto;
     user-select: none;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: gtl.$margin;
+    height: fit-content;
+    padding: 4px 6px;
 
-    &:hover {
-      cursor: pointer;
-      box-shadow: 1px 10px 10px #a6a6a6;
-      color: rgb(41, 87, 71);
-    }
-    &:active {
-      box-shadow: 1px 10px 10px #a6a6a6, inset 0px 1px 5px #6d7270;
+    p {
+      font-weight: 200;
+      font-size: 27px;
     }
   }
+}
+
+@media screen and (max-width: $screenMaxWidth__xs) {
 }

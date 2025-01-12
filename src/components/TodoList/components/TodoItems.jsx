@@ -1,25 +1,40 @@
-import { useContext } from 'react'
-import { TodoListContext } from '../context/TodoListContext'
-import { TodosLoading } from './TodosLoading'
-import { TodoItem } from './TodoItem'
-import '../styles/TodoItems.scss'
+import { useContext } from 'react';
+import { TodoListContext } from '../context/TodoListContext';
+import { TodosLoading } from './TodosLoading';
+import { TodoItem } from './TodoItem';
+import '../styles/TodoItems.scss';
 
+/**
+ * TodoItems component that receives a ref from the parent.
+ * The `forwardRef` function allows the `ref` to be passed to the div element.
+ */
 const TodoItems = () => {
-  const { itemsFinded: todos, loading, errors, config } = useContext(TodoListContext)
+  const { view } = useContext(TodoListContext);
+  const { itemsFinded: todos, loading, errors, config } = useContext(TodoListContext);
+
   return (
     <>
       <TodosLoading />
       {(!loading && !errors) && (
-        <ul className="TodoItems">
-          {
-            todos.length ? (
-              todos.map((todo) => (
-                <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
-              ))
-            ) : <h2>{config?.pharagraph[3]}</h2>
-          }
-        </ul>
+        <>
+          {!todos.length && (
+            <notFound className="notFound">
+              <h2>{config?.pharagraph[3]}</h2>
+            </notFound>
+          )}
+          <div className={`TodoItems`} id='TodoItems'>
+            <div className={`TodoItems__child TodoItems__${view ? 'flex' : 'grid'}`}>
+              {todos.length > 0 && (
+                todos.map((todo) => (
+                  <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
+                ))
+              )}
+            </div>
+          </div>
+        </>
       )}
-    </>)
-}
-export { TodoItems }
+    </>
+  );
+};
+
+export { TodoItems };

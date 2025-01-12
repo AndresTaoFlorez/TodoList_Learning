@@ -1,3 +1,134 @@
 
-$margin: 0.98em;
-$rounded-1: 8px
+
+// -------- Variables define
+
+$rounded-1: 8px;
+$screenMaxWidth__xs: 576px;
+$margin-default: 0.98em;
+$margin-xs: 0.6em;
+
+:root {
+  --margin: #{$margin-default};
+}
+
+@media screen and (max-width: 576px) {
+  :root {
+    --margin: #{$margin-xs};
+  }
+}
+
+$margin: var(--margin);
+
+
+// --------
+
+
+@media screen and (max-width: $screenMaxWidth__xs) {
+  $margin: 0.6em;
+}
+
+@mixin Todo_scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+    height: 8px; /* Alto para barras horizontales */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      45deg,
+      #8d9fb6,
+      #a0adc9
+    ); /* Color y estilo del "pulgar" */
+    border-radius: gtl.$rounded-1; /* Bordes redondeados */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      45deg,
+      #a0adc9,
+      #8d9fb6
+    ); /* Cambio de color al pasar el cursor */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; /* Color de la pista */
+    border-radius: 0 gtl.$rounded-1 gtl.$rounded-1 0; /* Bordes redondeados */
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background: transparent; /* Cambio de color al pasar el cursor */
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent; /* Esquina de unión entre scrollbars vertical y horizontal */
+  }
+}
+
+@mixin background-image($image-url) {
+  background-image: url($image-url);
+  background-position: 0 60%;
+  background-size: 100% auto;
+}
+
+@mixin button($type: "default") {
+  $button-colors: (
+    "default": #c2c2c2,
+    "change-view": #2ea44f,
+    "delete": #d73a49,
+    "add": #0366d6,
+  );
+
+  $color: map-get($button-colors, $type);
+
+  @if $color {
+    // Estilos del botón
+    appearance: none;
+    background-color: $color;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+  } @else {
+    @warn "El tipo '#{$type}' no está definido en el mapa de colores.";
+  }
+  /* CSS */
+
+  &:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: darken($color, 10%); // Oscurecer el color un 10%
+  }
+
+  &:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: default;
+  }
+
+  &:active {
+    background-color: lighten($color, 5%); // Aclarar el color un 5%
+  }
+}

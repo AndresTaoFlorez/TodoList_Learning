@@ -1,13 +1,12 @@
 
 import { useState, useContext, useRef } from 'react'
-import { Modal } from './Modal'
 import { IoMdAdd } from "react-icons/io";
+import TextareaAutosize from 'react-textarea-autosize';
 import { TodoListContext } from '../context/TodoListContext'
 import '../styles/AddTodo.scss'
 
 const AddTodo = () => {
   const { handleAdd, config } = useContext(TodoListContext)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [text, setText] = useState('')
   const textareRef = useRef(null)
 
@@ -15,7 +14,6 @@ const AddTodo = () => {
     e.preventDefault()
     if (text === '') return
     handleAdd(text)
-    setIsModalOpen(false)
     setText('')
 
     if (textareRef.current) {
@@ -23,38 +21,29 @@ const AddTodo = () => {
     }
   }
 
+
   const handleWrite = (e) => {
-    const textarea = textareRef.current
-    if (textarea) {
-      textarea.style.height = `${textarea.scrollHeight}px`
-    }
     if (!e) return;
     setText(e.target.value)
-  }
-
-  const handleModal = () => {
-    setIsModalOpen((prev) => !prev)
-    setText('')
   }
 
   return (
     <div className="AddTodo">
       <form onSubmit={createTodo} className="AddTodo__form">
-        <textarea
+        <TextareaAutosize
           className="AddTodo__textarea"
           ref={textareRef}
           type="text"
           onChange={handleWrite}
           value={text}
           placeholder={config?.pharagraph[4]}
-          autoFocus
-        />
-        <IoMdAdd
+          autoFocus />
+        <button
           className="AddTodo__icon"
           tabIndex={0}
           onClick={createTodo}
           onKeyDown={(e) => ['Enter', ' '].includes(e.key) && createTodo(e)}
-        />
+        ><p>+</p></button>
       </form>
     </div>
 
