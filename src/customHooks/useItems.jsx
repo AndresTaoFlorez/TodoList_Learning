@@ -54,16 +54,14 @@ const useItems = () => {
   const handleSearch = (event = "", itemsState) => {
     try {
       setLoading(true)
-      setTimeout(() => {
-        const text = typeof event?.target?.value === 'string' ? event.target.value : event
-        setSearchValue(text)
-        const getItems = getToLocalItems()
-        const itemsFindered = (itemsState || getItems || []).filter((item) =>
-          item.text.toLowerCase().includes(text.toLowerCase())
-        );
-        setItemsFinded(!text.length === 0 || !itemsFindered.length > 0 ? [] : itemsFindered)
-        setLoading(false)
-      }, 500)
+      const text = typeof event?.target?.value === 'string' ? event.target.value : event
+      setSearchValue(text)
+      const getItems = getToLocalItems()
+      const itemsFindered = (itemsState || getItems || []).filter((item) =>
+        item.text.toLowerCase().includes(text.toLowerCase())
+      );
+      setItemsFinded(!text.length === 0 || !itemsFindered.length > 0 ? [] : itemsFindered)
+      setLoading(false)
     } catch (e) {
       setErrors(e)
     } finally {
