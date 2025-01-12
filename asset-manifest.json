@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AndresTaoFlorez/TodoList_Learning/static/css/main.749d8d8b.css",
+    "main.js": "/AndresTaoFlorez/TodoList_Learning/static/js/main.0fe94b5d.js",
+    "index.html": "/AndresTaoFlorez/TodoList_Learning/index.html",
+    "main.749d8d8b.css.map": "/AndresTaoFlorez/TodoList_Learning/static/css/main.749d8d8b.css.map",
+    "main.0fe94b5d.js.map": "/AndresTaoFlorez/TodoList_Learning/static/js/main.0fe94b5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.749d8d8b.css",
+    "static/js/main.0fe94b5d.js"
+  ]
+}
