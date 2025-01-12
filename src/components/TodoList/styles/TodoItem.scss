@@ -70,6 +70,25 @@
       background-position: 200px 0;
     }
   }
+
+  &__flex {
+    width: auto;
+    width: -webkit-fill-available;
+    margin-bottom: gtl.$margin;
+    gap: gtl.$margin;
+  }
+  &__grid {
+    grid-template-columns: auto 1fr auto;
+    gap: gtl.$margin;
+    grid-template-rows: auto;
+  }
+
+  p.pharagraph {
+    // text
+    display: grid;
+    place-self: baseline;
+    overflow-x: hidden;
+  }
 }
 
 @media screen and (max-width: $screenMaxWidth__xs) {

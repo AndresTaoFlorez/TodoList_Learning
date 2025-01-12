@@ -18,9 +18,9 @@ const TodoItems = () => {
       {(!loading && !errors) && (
         <>
           {!todos.length && (
-            <notFound className="notFound">
+            <div className="notFound">
               <h2>{config?.pharagraph[3]}</h2>
-            </notFound>
+            </div>
           )}
           <div className={`TodoItems`} id='TodoItems'>
             <div className={`TodoItems__child TodoItems__${view ? 'flex' : 'grid'}`}>
