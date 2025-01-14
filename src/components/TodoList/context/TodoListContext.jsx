@@ -30,7 +30,7 @@ const TodoListProvider = ({ children }) => {
 
   return (
     <TodoListContext.Provider value={{
-      handleComplete, handleDelete, handleSearch, handleAdd, itemsFinded: todos, loading, errors, config, setView, view
+      handleComplete, handleDelete, handleSearch, handleAdd, todos, loading, errors, config, setView, view
     }}>
       {children}
     </TodoListContext.Provider>

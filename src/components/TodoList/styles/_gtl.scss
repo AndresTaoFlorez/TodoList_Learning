@@ -3,7 +3,8 @@
 // -------- Variables define
 
 $rounded-1: 8px;
-$screenMaxWidth__xs: 576px;
+$screenMaxWidth__xs: 632px;
+// $screenMaxWidth__xs: 576px;
 $margin-default: 0.98em;
 $margin-xs: 0.6em;
 
@@ -64,11 +65,15 @@ $margin: var(--margin);
   }
 }
 
-@mixin background-image($image-url) {
-  background-image: url($image-url);
+@mixin background-image {
   background-position: 0 60%;
   background-size: 100% auto;
 }
+// @mixin background-image($image-url) {
+//   background-image: url($image-url);
+//   background-position: 0 60%;
+//   background-size: 100% auto;
+// }
 
 @mixin button($type: "default") {
   $button-colors: (

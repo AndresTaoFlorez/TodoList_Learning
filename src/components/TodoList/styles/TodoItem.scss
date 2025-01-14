@@ -11,7 +11,8 @@
   align-items: center;
   border-bottom: 1px solid #545454;
   transition: width 100ms;	break-inside: avoid;
-  width: clamp(200px, 510px, 80vw); //maxWidth in relation to the window size
+  // width: clamp(200px, 510px, 80vw); //maxWidth in relation to the window size
+  width: 100%;
 
   &__flex {
     width: auto;
@@ -25,11 +26,9 @@
     grid-template-rows: auto;
   }
 
-  p.pharagraph {
+  p.paragraph {
     // text
-    display: grid;
     place-self: baseline;
-    overflow-x: hidden;
   }
 
   &__checkbox {
@@ -85,9 +84,7 @@
 
   p.pharagraph {
     // text
-    display: grid;
     place-self: baseline;
-    overflow-x: hidden;
   }
 }
 

@@ -1,5 +1,5 @@
 
-import { useContext, useRef, useEffect, useState } from "react"
+import { useContext, useRef} from "react"
 import { TodoListContext } from "../context/TodoListContext"
 import '../styles/TodoSearch.scss'
 import { InlineEditor } from "./inlineEditor";

@@ -1,6 +1,5 @@
 
 import { useState, useContext, useRef } from 'react'
-import { IoMdAdd } from "react-icons/io";
 import TextareaAutosize from 'react-textarea-autosize';
 import { TodoListContext } from '../context/TodoListContext'
 import '../styles/AddTodo.scss'

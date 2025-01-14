@@ -4,36 +4,36 @@ import { TodosLoading } from './TodosLoading';
 import { TodoItem } from './TodoItem';
 import '../styles/TodoItems.scss';
 
-/**
- * TodoItems component that receives a ref from the parent.
- * The `forwardRef` function allows the `ref` to be passed to the div element.
- */
 const TodoItems = () => {
-  const { view } = useContext(TodoListContext);
-  const { itemsFinded: todos, loading, errors, config } = useContext(TodoListContext);
+  const { view, todos, loading, errors, config } = useContext(TodoListContext);
+
+  // Mostrar estado de carga
+  if (loading) return <TodosLoading />;
+
+  // Mostrar mensaje de error
+  if (errors) {
+    return (
+      <div className="errorMessage">
+        <h2>{config?.paragraph?.[4] || 'Error al cargar las tareas'}</h2>
+      </div>
+    );
+  }
+
+  // Mostrar mensaje si no hay tareas
+  if (!todos.length) {
+    return (
+      <div className="notFound">
+        <h2>{config?.paragraph?.[3] || 'No hay tareas disponibles'}</h2>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <TodosLoading />
-      {(!loading && !errors) && (
-        <>
-          {!todos.length && (
-            <div className="notFound">
-              <h2>{config?.pharagraph[3]}</h2>
-            </div>
-          )}
-          <div className={`TodoItems`} id='TodoItems'>
-            <div className={`TodoItems__child TodoItems__${view ? 'flex' : 'grid'}`}>
-              {todos.length > 0 && (
-                todos.map((todo) => (
-                  <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
-                ))
-              )}
-            </div>
-          </div>
-        </>
-      )}
-    </>
+    <div className={`TodoItems TodoItems__${view ? 'flex' : 'grid'}`} id="TodoItems">
+      {todos.map(({ id, text, completed }) => (
+        <TodoItem key={id} id={id} text={text} completed={completed} />
+      ))}
+    </div>
   );
 };
 

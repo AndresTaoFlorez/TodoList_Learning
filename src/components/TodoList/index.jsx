@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { TodoCounter } from "./components/TodoCounter.jsx";
 import { TodoSearch } from "./components/TodoSearch.jsx";
 import { TodoItems } from "./components/TodoItems.jsx";
@@ -10,10 +9,10 @@ import "./styles/TodoList.scss";
 
 function TodoList() {
   const { height, width } = useGetBodySize();
- 
+const background_picture_url = process.env.PUBLIC_URL + '/images/bg-todolist.jpg'
 
   return (
-    <div className="TodoList">
+    <div className="TodoList" style={{ '--background-todolist': `url(${background_picture_url})` }}>
       <section className="TodoList__picture" />
       <section className="TodoList__header">
         <TodoSearch />

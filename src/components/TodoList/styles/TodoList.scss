@@ -34,9 +34,8 @@
       height: clamp(300px, 500px, 80vh);
       width: inherit;
 
-      @include background-image(
-        "https://images.unsplash.com/photo-1528287942171-fbe365d1d9ac?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&w=1200&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-      );
+      @include background-image;
+      background-image: var(--background-todolist);
     }
   }
 
