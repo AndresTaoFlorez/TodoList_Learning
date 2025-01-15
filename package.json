@@ -1,7 +1,7 @@
 {
   "name": "platzi-intro-react-base",
   "version": "0.1.0",
-  "homepage": "https://github.com/AndresTaoFlorez/TodoList_Learning",
+  "homepage": "https://andrestaoflorez.github.io/TodoList_Learning",
   "scripts": {
     "build": "react-scripts build",
     "predeploy": "npm run build",
